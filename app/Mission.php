@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Bounoable\Quest\Mission as MissionInterface;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\MissionRepository")
  */
 class Mission implements MissionInterface
 {
@@ -29,6 +29,13 @@ class Mission implements MissionInterface
     private $type;
 
     /**
+     * The mission data.
+     *
+     * @var array
+     */
+    private $data = [];
+
+    /**
      * The completion status.
      *
      * @ORM\Column(type="boolean")
@@ -39,9 +46,10 @@ class Mission implements MissionInterface
     /**
      * Create a mission.
      */
-    public function __construct(string $type)
+    public function __construct(string $type, array $data = [])
     {
         $this->type = $type;
+        $this->data = $data;
     }
 
     /**
@@ -50,6 +58,14 @@ class Mission implements MissionInterface
     public function getType(): string
     {
         return $this->type;
+    }
+
+    /**
+     * Get the mission data.
+     */
+    public function getData(): array
+    {
+        return $this->data;
     }
 
     /**
