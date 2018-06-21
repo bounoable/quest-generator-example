@@ -66,6 +66,6 @@ class DefeatCharacter extends AbstractMissionType
 
     public function validateData(array $data): bool
     {
-        return !!$this->characters->byId($data['character'] ?? '');
+        return is_string($this->characters->byId($data['character'] ?? ''));
     }
 }

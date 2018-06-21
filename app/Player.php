@@ -58,4 +58,12 @@ class Player
     {
         return $this->gold;
     }
+
+    /**
+     * Set the player's gold.
+     */
+    public function setGold(int $amount): void
+    {
+        $this->gold = $amount;
+    }
 }
