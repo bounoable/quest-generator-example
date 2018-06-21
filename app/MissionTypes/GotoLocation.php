@@ -4,21 +4,21 @@ namespace App\MissionTypes;
 
 use App\Mission;
 use App\MissionRepository;
-use App\Battle\CharacterRepository;
+use App\Map\LocationRepository;
 use Bounoable\Quest\GeneratedMission;
 use Bounoable\Quest\AbstractMissionType;
 use Bounoable\Quest\Mission as MissionInterface;
 
-class DefeatCharacter extends AbstractMissionType
+class GotoLocation extends AbstractMissionType
 {
-    const NAME = 'defeat-character';
+    const NAME = 'goto-location';
 
     /**
-     * The character repository.
+     * The location repository.
      *
-     * @var CharacterRepository
+     * @var LocationRepository
      */
-    private $characters;
+    private $locations;
 
     /**
      * The mission repository.
@@ -30,9 +30,9 @@ class DefeatCharacter extends AbstractMissionType
     /**
      * Initialize the mission type.
      */
-    public function __construct(CharacterRepository $characters, MissionRepository $missions)
+    public function __construct(LocationRepository $locations, MissionRepository $missions)
     {
-        $this->characters = $characters;
+        $this->locations = $locations;
         $this->missions = $missions;
     }
 
@@ -46,7 +46,7 @@ class DefeatCharacter extends AbstractMissionType
     public function generate(): GeneratedMission
     {
         return new GeneratedMission($this->getTypeName(), [
-            'character' => $this->characters->random()->getId()
+            'location' => $this->locations->random()->getId()
         ]);
     }
 
@@ -66,6 +66,6 @@ class DefeatCharacter extends AbstractMissionType
 
     public function validateData(array $data): bool
     {
-        return !!$this->characters->byId($data['character'] ?? '');
+        return !!$this->location->byId($data['location'] ?? '');
     }
 }
