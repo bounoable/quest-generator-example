@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Map;
+namespace App;
 
-class Location
+class Item
 {
     /**
-     * The location id.
+     * The item id.
      *
      * @var string
      */
     private $id;
 
     /**
-     * The location's name.
+     * The item name.
      *
      * @var string
      */
     private $name;
 
     /**
-     * Create a character.
+     * Create an item.
      */
     public function __construct(string $id, string $name)
     {
@@ -28,7 +28,7 @@ class Location
     }
 
     /**
-     * Get the location id.
+     * Get the item id.
      */
     public function getId(): string
     {
@@ -36,7 +36,7 @@ class Location
     }
 
     /**
-     * Get the location's name.
+     * Get the item name.
      */
     public function getName(): string
     {

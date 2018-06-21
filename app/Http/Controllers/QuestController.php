@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Player;
+use App\ItemRepository;
 use App\QuestRepository;
 use Bounoable\Quest\Manager;
 use Illuminate\Http\Request;
@@ -12,13 +13,20 @@ use Illuminate\Http\RedirectResponse;
 
 class QuestController extends Controller
 {
-    public function index(QuestRepository $quests, Manager $manager): View
+    public function index(QuestRepository $quests, Manager $manager, ItemRepository $itemRepo): View
     {
+        $player = Player::load();
+
+        $itemNames = array_map(function (string $id) use ($itemRepo) {
+            return $itemRepo->byId($id)->getName();
+        }, $player->getItems());
+
         return view('quests.index', [
             'activeQuests' => $quests->active(),
             'completedQuests' => $quests->completed(),
             'manager' => $manager,
-            'player' => Player::load(),
+            'player' => $player,
+            'itemNames' => $itemNames,
         ]);
     }
 

@@ -13,7 +13,7 @@
         </p>
 
         <p class="content">
-            <span class="has-text-weight-semibold">Items:</span> []
+            <span class="has-text-weight-semibold">Items:</span> {{ count($itemNames) ? implode(', ', $itemNames) : 'Keine' }}
         </p>
 
         <h2 class="title is-4">Quests generieren</h2>
@@ -45,27 +45,31 @@
 
 <section class="section">
     <div class="container">
-        <h2 class="title is-4">Aktive Quests</h2>
+        @if (count($activeQuests))
+            <h2 class="title is-4">Aktive Quests</h2>
 
-        <div class="columns is-multiline">
-            @foreach ($activeQuests as $quest)
-                <div class="column is-6">
-                    @component('components.quest', ['quest' => $quest, 'manager' => $manager])
-                    @endcomponent
-                </div>
-            @endforeach
-        </div>
+            <div class="columns is-multiline">
+                @foreach ($activeQuests as $quest)
+                    <div class="column is-6">
+                        @component('components.quest', ['quest' => $quest, 'manager' => $manager])
+                        @endcomponent
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
-        <h2 class="title is-4">Abgeschlossene Quests</h2>
+        @if (count($completedQuests))
+            <h2 class="title is-4">Abgeschlossene Quests</h2>
 
-        <div class="columns is-multiline">
-            @foreach ($completedQuests as $quest)
-                <div class="column is-6">
-                    @component('components.quest', ['quest' => $quest, 'manager' => $manager])
-                    @endcomponent
-                </div>
-            @endforeach
-        </div>
+            <div class="columns is-multiline">
+                @foreach ($completedQuests as $quest)
+                    <div class="column is-6">
+                        @component('components.quest', ['quest' => $quest, 'manager' => $manager])
+                        @endcomponent
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 </section>
 @endsection

@@ -38,9 +38,9 @@ class GotoLocation extends AbstractMissionType
 
     protected function getDescription(MissionInterface $mission): string
     {
-        $character = $this->characters->byId($mission->getData()['character']);
+        $location = $this->locations->byId($mission->getData()['location']);
 
-        return "Besiege {$character->getName()} im Kampf.";
+        return "Reise nach {$location->getName()}.";
     }
 
     public function generate(): GeneratedMission

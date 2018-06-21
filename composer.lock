@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a885e8dd49a2ff925a7ae3e893783851",
+    "content-hash": "8d9064466f3f5ef800a1e06be59ff7ad",
     "packages": [
         {
             "name": "bounoable/quest-generator",
-            "version": "0.1.11",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bounoable/quest-generator.git",
-                "reference": "74a690e1b2cf3b212cbe04e3b31dd49488681824"
+                "reference": "62d35a6928aff390f1ddda0e6f6c66e0d19791c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/74a690e1b2cf3b212cbe04e3b31dd49488681824",
-                "reference": "74a690e1b2cf3b212cbe04e3b31dd49488681824",
+                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/62d35a6928aff390f1ddda0e6f6c66e0d19791c6",
+                "reference": "62d35a6928aff390f1ddda0e6f6c66e0d19791c6",
                 "shasum": ""
             },
             "require": {
@@ -43,10 +43,10 @@
             ],
             "description": "A procedural quest generator written in PHP.",
             "support": {
-                "source": "https://github.com/bounoable/quest-generator/tree/0.1.11",
+                "source": "https://github.com/bounoable/quest-generator/tree/0.3.0",
                 "issues": "https://github.com/bounoable/quest-generator/issues"
             },
-            "time": "2018-06-21T18:02:29+00:00"
+            "time": "2018-06-21T19:22:49+00:00"
         },
         {
             "name": "doctrine/annotations",

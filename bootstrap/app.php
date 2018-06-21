@@ -2,7 +2,10 @@
 
 use App\QuestIntegrator;
 use App\RewardTypes\Gold;
+use App\RewardTypes\Item;
+use Bounoable\Quest\Manager;
 use Laravel\Lumen\Application;
+use App\MissionTypes\GotoLocation;
 use App\MissionTypes\DefeatCharacter;
 use Bounoable\Quest\RewardTypeManager;
 use Bounoable\Quest\MissionTypeManager;
@@ -56,27 +59,35 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
-$app->singleton(MissionTypeManager::class, function (Application $app) {
-    $manager = new MissionTypeManager;
+$app->singleton(MissionTypeManager::class);
+$app->singleton(RewardTypeManager::class);
+$app->singleton(Integrator::class, QuestIntegrator::class);
 
-    $manager->register(DefeatCharacter::NAME, function () use ($app) {
+$app->singleton(Manager::class, function (Application $app) {
+    $manager = new Manager(
+        $app->make(MissionTypeManager::class),
+        $app->make(RewardTypeManager::class),
+        $app->make(Integrator::class)
+    );
+
+    $manager->registerMissionType(DefeatCharacter::NAME, function () use ($app) {
         return $app->make(DefeatCharacter::class);
     });
 
-    return $manager;
-});
+    $manager->registerMissionType(GotoLocation::NAME, function () use ($app) {
+        return $app->make(GotoLocation::class);
+    });
 
-$app->singleton(RewardTypeManager::class, function () {
-    $manager = new RewardTypeManager;
-
-    $manager->register(Gold::NAME, function () {
+    $manager->registerRewardType(Gold::NAME, function () {
         return new Gold;
+    });
+
+    $manager->registerRewardType(Item::NAME, function () use ($app) {
+        return $app->make(Item::class);
     });
 
     return $manager;
 });
-
-$app->singleton(Integrator::class, QuestIntegrator::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -16,11 +16,27 @@ class Player
     private $gold = 0;
 
     /**
+     * The player's items (IDs).
+     *
+     * @var string[]
+     */
+    private $items = [];
+
+    /**
      * Create a player.
      */
-    public function __construct(int $gold = 0)
+    protected function __construct(int $gold = 0, array $items = [])
     {
         $this->gold = $gold;
+        $this->items = $items;
+    }
+
+    /**
+     * Create a player.
+     */
+    public static function create(): self
+    {
+        return new static;
     }
 
     /**
@@ -31,12 +47,12 @@ class Player
         $path = storage_path(static::FILENAME);
 
         if (!file_exists($path)) {
-            return new static;
+            return static::create();
         }
 
         $data = Yaml::parseFile($path);
 
-        return new static($data['gold']);
+        return new static($data['gold'], $data['items']);
     }
 
     /**
@@ -45,7 +61,8 @@ class Player
     public function save(): void
     {
         $contents = Yaml::dump([
-            'gold' => $this->getGold()
+            'gold' => $this->getGold(),
+            'items' => $this->getItems(),
         ]);
 
         file_put_contents(storage_path(static::FILENAME), $contents);
@@ -65,5 +82,23 @@ class Player
     public function setGold(int $amount): void
     {
         $this->gold = $amount;
+    }
+
+    /**
+     * Get the player's items (IDs).
+     *
+     * @return string[]
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * Add an item to the player's inventory.
+     */
+    public function addItem(string $id): void
+    {
+        $this->items[] = $id;
     }
 }
