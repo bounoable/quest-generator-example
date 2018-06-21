@@ -24,6 +24,6 @@ class MissionRepository extends EntityRepository
         $em = $this->getEntityManager();
 
         $em->persist($mission);
-        $em->flush();
+        $em->flush($mission);
     }
 }

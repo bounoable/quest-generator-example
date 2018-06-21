@@ -3,15 +3,14 @@
 namespace App;
 
 use Doctrine\ORM\Mapping as ORM;
-use Bounoable\Quest\Mission as MissionInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\MissionRepository")
+ * @ORM\Entity(repositoryClass="App\RewardRepository")
  */
-class Mission implements MissionInterface
+class Reward
 {
     /**
-     * The mission id.
+     * The reward id.
      *
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,16 +20,16 @@ class Mission implements MissionInterface
     private $id;
 
     /**
-     * The quest the mission belongs to.
+     * The quest the reward belongs to.
      *
-     * @ORM\ManyToOne(targetEntity="App\Quest", inversedBy="missions")
+     * @ORM\ManyToOne(targetEntity="App\Quest", inversedBy="rewards")
      * @ORM\JoinColumn(onDelete="cascade")
      * @var Quest
      */
     private $quest;
 
     /**
-     * The mission type.
+     * The reward type.
      *
      * @ORM\Column
      * @var string
@@ -38,22 +37,14 @@ class Mission implements MissionInterface
     private $type;
 
     /**
-     * The mission data.
+     * The reward data.
      *
      * @var array
      */
     private $data = [];
 
     /**
-     * The completion status.
-     *
-     * @ORM\Column(type="boolean")
-     * @var bool
-     */
-    private $completed = false;
-
-    /**
-     * Create a mission.
+     * Create a reward.
      */
     public function __construct(Quest $quest, string $type, array $data = [])
     {
@@ -63,7 +54,7 @@ class Mission implements MissionInterface
     }
 
     /**
-     * Get the quest the mission belongs to.
+     * Get the quest the reward belongs to.
      */
     public function getQuest(): Quest
     {
@@ -71,7 +62,7 @@ class Mission implements MissionInterface
     }
 
     /**
-     * Get the mission type.
+     * Get the reward type.
      */
     public function getType(): string
     {
@@ -79,18 +70,10 @@ class Mission implements MissionInterface
     }
 
     /**
-     * Get the mission data.
+     * Get the reward data.
      */
     public function getData(): array
     {
         return $this->data;
-    }
-
-    /**
-     * Determine if the mission has been completed.
-     */
-    public function isCompleted(): bool
-    {
-        return $this->completed;
     }
 }
