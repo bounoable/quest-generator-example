@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bounoable/quest-generator",
-            "version": "0.1.5",
+            "version": "0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bounoable/quest-generator.git",
-                "reference": "b5d7d96ff682c3d1e21c58c004c29fc87b718dbf"
+                "reference": "573394199bbdca776b0f5e2468e7e9e8b3c4415d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/b5d7d96ff682c3d1e21c58c004c29fc87b718dbf",
-                "reference": "b5d7d96ff682c3d1e21c58c004c29fc87b718dbf",
+                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/573394199bbdca776b0f5e2468e7e9e8b3c4415d",
+                "reference": "573394199bbdca776b0f5e2468e7e9e8b3c4415d",
                 "shasum": ""
             },
             "require": {
@@ -43,10 +43,10 @@
             ],
             "description": "A procedural quest generator written in PHP.",
             "support": {
-                "source": "https://github.com/bounoable/quest-generator/tree/0.1.5",
+                "source": "https://github.com/bounoable/quest-generator/tree/0.1.7",
                 "issues": "https://github.com/bounoable/quest-generator/issues"
             },
-            "time": "2018-06-21T14:32:06+00:00"
+            "time": "2018-06-21T15:54:43+00:00"
         },
         {
             "name": "doctrine/annotations",

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Bounoable\Quest\Mission as MissionInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\MissionRepository")
+ * @ORM\Entity
  */
 class Mission implements MissionInterface
 {

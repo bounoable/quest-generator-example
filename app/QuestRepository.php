@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Doctrine\ORM\EntityRepository;
-
-class QuestRepository extends EntityRepository
+class QuestRepository extends Repository
 {
     /**
      * Get all quests.
@@ -13,7 +11,7 @@ class QuestRepository extends EntityRepository
      */
     public function all(): array
     {
-        return $this->findAll();
+        return $this->em->getRepository(Quest::class)->findAll();
     }
 
     /**
@@ -21,28 +19,6 @@ class QuestRepository extends EntityRepository
      */
     public function byId(int $id): ?Quest
     {
-        return $this->findOneById($id);
-    }
-
-    /**
-     * Save a quest.
-     */
-    public function save(Quest $quest): void
-    {
-        $em = $this->getEntityManager();
-
-        $em->persist($quest);
-        $em->flush($quest);
-    }
-
-    /**
-     * Delete a quest.
-     */
-    public function delete(Quest $quest): void
-    {
-        $em = $this->getEntityManager();
-
-        $em->remove($quest);
-        $em->flush($quest);
+        return $this->em->getRepository(Quest::class)->findOneById($id);
     }
 }

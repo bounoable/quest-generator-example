@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Doctrine\ORM\EntityRepository;
-
-class MissionRepository extends EntityRepository
+class MissionRepository extends Repository
 {
     /**
      * Get all missions.
@@ -13,17 +11,6 @@ class MissionRepository extends EntityRepository
      */
     public function all(): array
     {
-        return $this->findAll();
-    }
-
-    /**
-     * Save a mission.
-     */
-    public function save(Mission $mission): void
-    {
-        $em = $this->getEntityManager();
-
-        $em->persist($mission);
-        $em->flush($mission);
+        return $this->em->getRepository(Mission::class)->findAll();
     }
 }

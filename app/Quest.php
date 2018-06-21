@@ -7,7 +7,7 @@ use Bounoable\Quest\Quest as QuestInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\QuestRepository")
+ * @ORM\Entity
  */
 class Quest implements QuestInterface
 {
