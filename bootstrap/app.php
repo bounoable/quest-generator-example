@@ -1,5 +1,13 @@
 <?php
 
+use App\QuestIntegrator;
+use App\RewardTypes\Gold;
+use Laravel\Lumen\Application;
+use App\MissionTypes\DefeatCharacter;
+use Bounoable\Quest\RewardTypeManager;
+use Bounoable\Quest\MissionTypeManager;
+use Bounoable\Quest\Integration\QuestIntegrator as Integrator;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
@@ -47,6 +55,28 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+
+$app->singleton(MissionTypeManager::class, function (Application $app) {
+    $manager = new MissionTypeManager;
+
+    $manager->register(DefeatCharacter::NAME, function () use ($app) {
+        return $app->make(DefeatCharacter::class);
+    });
+
+    return $manager;
+});
+
+$app->singleton(RewardTypeManager::class, function () {
+    $manager = new RewardTypeManager;
+
+    $manager->register(Gold::NAME, function () {
+        return new Gold;
+    });
+
+    return $manager;
+});
+
+$app->singleton(Integrator::class, QuestIntegrator::class);
 
 /*
 |--------------------------------------------------------------------------

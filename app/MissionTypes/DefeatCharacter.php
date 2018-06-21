@@ -46,7 +46,7 @@ class DefeatCharacter extends AbstractMissionType
     public function generate(): GeneratedMission
     {
         return new GeneratedMission($this->getTypeName(), [
-            'character' => $this->characters->random()
+            'character' => $this->characters->random()->getId()
         ]);
     }
 

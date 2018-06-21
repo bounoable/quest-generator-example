@@ -40,6 +40,7 @@ class Mission implements MissionInterface
     /**
      * The mission data.
      *
+     * @ORM\Column(type="json")
      * @var array
      */
     private $data = [];
@@ -60,6 +61,14 @@ class Mission implements MissionInterface
         $this->quest = $quest;
         $this->type = $type;
         $this->data = $data;
+    }
+
+    /**
+     * Get the mission id.
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**
@@ -92,5 +101,13 @@ class Mission implements MissionInterface
     public function isCompleted(): bool
     {
         return $this->completed;
+    }
+
+    /**
+     * Complete the mission.
+     */
+    public function complete(): void
+    {
+        $this->completed = true;
     }
 }

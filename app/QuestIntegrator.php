@@ -78,6 +78,8 @@ class QuestIntegrator implements Integrator
             return;
         }
 
-        $this->quests->delete($quest);
+        $quest->complete();
+
+        $this->quests->save($quest);
     }
 }

@@ -4,14 +4,19 @@ namespace App;
 
 class QuestRepository extends Repository
 {
-    /**
-     * Get all quests.
-     *
-     * @return Quest[]
-     */
     public function all(): array
     {
         return $this->em->getRepository(Quest::class)->findAll();
+    }
+
+    public function active(): array
+    {
+        return $this->em->getRepository(Quest::class)->findByCompleted(false);
+    }
+
+    public function completed(): array
+    {
+        return $this->em->getRepository(Quest::class)->findByCompleted(true);
     }
 
     /**

@@ -13,7 +13,8 @@ class Gold extends AbstractRewardType
 
     protected function getDescription(RewardInterface $reward): string
     {
-        return "{$reward->getData()['amount']} Gold";
+        $amount = number_format($reward->getData()['amount'], 0, ',', '.');
+        return "{$amount} Gold";
     }
 
     public function generate(): GeneratedReward
@@ -27,7 +28,7 @@ class Gold extends AbstractRewardType
     {
         $player = Player::load();
 
-        $player->setGold($reward->getData()['amount']);
+        $player->setGold($player->getGold() + $reward->getData()['amount']);
         $player->save();
     }
 

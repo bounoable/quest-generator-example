@@ -3,11 +3,12 @@
 namespace App;
 
 use Doctrine\ORM\Mapping as ORM;
+use Bounoable\Quest\Reward as RewardInterface;
 
 /**
  * @ORM\Entity
  */
-class Reward
+class Reward implements RewardInterface
 {
     /**
      * The reward id.
@@ -39,6 +40,7 @@ class Reward
     /**
      * The reward data.
      *
+     * @ORM\Column(type="json")
      * @var array
      */
     private $data = [];

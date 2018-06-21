@@ -29,21 +29,21 @@ class Repository
         $entities = is_array($entity) ? $entity : func_get_args();
 
         foreach ($entities as $entity) {
-            $this->em->persist($quest);
+            $this->em->persist($entity);
         }
 
         $this->em->flush($entities);
     }
 
     /**
-     * Delete a quest.
+     * Delete an entity.
      */
-    public function delete(Quest $quest): void
+    public function delete($entity): void
     {
         $entities = is_array($entity) ? $entity : func_get_args();
 
         foreach ($entities as $entity) {
-            $this->em->remove($quest);
+            $this->em->remove($entity);
         }
 
         $this->em->flush($entities);

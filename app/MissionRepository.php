@@ -13,4 +13,9 @@ class MissionRepository extends Repository
     {
         return $this->em->getRepository(Mission::class)->findAll();
     }
+
+    public function byId(int $id): ?Mission
+    {
+        return $this->em->getRepository(Mission::class)->findOneById($id);
+    }
 }
