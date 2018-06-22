@@ -43,7 +43,7 @@ class DefeatCharacter extends AbstractMissionType
         return "Besiege {$character->getName()} im Kampf.";
     }
 
-    public function generate(): GeneratedMission
+    public function generate(): MissionInterface
     {
         return new GeneratedMission($this->getTypeName(), [
             'character' => $this->characters->random()->getId()

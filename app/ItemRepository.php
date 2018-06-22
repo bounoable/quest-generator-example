@@ -20,7 +20,7 @@ class ItemRepository
     {
         $this->items = [
             new Item('apple', 'Apfel'),
-            new Item('sword', 'Sword'),
+            new Item('sword', 'Schwert'),
             new Item('hat', 'Hut'),
             new Item('water', 'Krug Wasser')
         ];

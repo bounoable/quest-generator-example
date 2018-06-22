@@ -17,7 +17,7 @@ class Gold extends AbstractRewardType
         return "{$amount} Gold";
     }
 
-    public function generate(): GeneratedReward
+    public function generate(): RewardInterface
     {
         return new GeneratedReward($this->getTypeName(), [
             'amount' => mt_rand(1, 10) * 100

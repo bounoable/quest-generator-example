@@ -32,7 +32,7 @@ class Item extends AbstractRewardType
         return $this->items->byId($reward->getData()['item'])->getName();
     }
 
-    public function generate(): GeneratedReward
+    public function generate(): RewardInterface
     {
         return new GeneratedReward($this->getTypeName(), [
             'item' => $this->items->random()->getId()

@@ -43,7 +43,7 @@ class GotoLocation extends AbstractMissionType
         return "Reise nach {$location->getName()}.";
     }
 
-    public function generate(): GeneratedMission
+    public function generate(): MissionInterface
     {
         return new GeneratedMission($this->getTypeName(), [
             'location' => $this->locations->random()->getId()
