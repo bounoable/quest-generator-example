@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d9064466f3f5ef800a1e06be59ff7ad",
+    "content-hash": "9a5fa9c5cdc770c524fee0269c146bf1",
     "packages": [
         {
             "name": "bounoable/quest-generator",
-            "version": "0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bounoable/quest-generator.git",
-                "reference": "62d35a6928aff390f1ddda0e6f6c66e0d19791c6"
+                "reference": "a685d77d4bf1481b5bf5c1824a6cd5a1f9c94e29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/62d35a6928aff390f1ddda0e6f6c66e0d19791c6",
-                "reference": "62d35a6928aff390f1ddda0e6f6c66e0d19791c6",
+                "url": "https://api.github.com/repos/bounoable/quest-generator/zipball/a685d77d4bf1481b5bf5c1824a6cd5a1f9c94e29",
+                "reference": "a685d77d4bf1481b5bf5c1824a6cd5a1f9c94e29",
                 "shasum": ""
             },
             "require": {
@@ -43,10 +43,10 @@
             ],
             "description": "A procedural quest generator written in PHP.",
             "support": {
-                "source": "https://github.com/bounoable/quest-generator/tree/0.3.0",
+                "source": "https://github.com/bounoable/quest-generator/tree/master",
                 "issues": "https://github.com/bounoable/quest-generator/issues"
             },
-            "time": "2018-06-21T19:22:49+00:00"
+            "time": "2018-06-22T16:25:59+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -4758,7 +4758,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "bounoable/quest-generator": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

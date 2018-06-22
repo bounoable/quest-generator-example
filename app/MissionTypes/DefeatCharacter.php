@@ -50,15 +50,6 @@ class DefeatCharacter extends AbstractMissionType
         ]);
     }
 
-    public function start(GeneratedMission $generated): MissionInterface
-    {
-        $mission = new Mission($generated->getType(), $generated->getData());
-
-        $this->missions->save($mission);
-
-        return $mission;
-    }
-
     public function check(MissionInterface $mission): bool
     {
         return $mission->isCompleted();
