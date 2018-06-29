@@ -1,13 +1,2 @@
-gold: 2100
-items:
-    - sword
-    - hat
-    - apple
-    - apple
-    - apple
-    - apple
-    - water
-    - hat
-    - hat
-    - water
-    - water
+gold: 0
+items: {  }

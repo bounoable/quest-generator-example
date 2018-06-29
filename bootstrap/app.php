@@ -4,11 +4,14 @@ use App\QuestIntegrator;
 use App\RewardTypes\Gold;
 use App\RewardTypes\Item;
 use Bounoable\Quest\Manager;
+use Bounoable\Quest\Generator;
 use Laravel\Lumen\Application;
 use App\MissionTypes\GotoLocation;
 use App\MissionTypes\DefeatCharacter;
 use Bounoable\Quest\RewardTypeManager;
 use Bounoable\Quest\MissionTypeManager;
+use Bounoable\Quest\Export\FileExporter;
+use Bounoable\Quest\Export\YamlExporter;
 use Bounoable\Quest\Integration\QuestIntegrator as Integrator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -59,12 +62,15 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton(FileExporter::class, YamlExporter::class);
 $app->singleton(MissionTypeManager::class);
 $app->singleton(RewardTypeManager::class);
 $app->singleton(Integrator::class, QuestIntegrator::class);
 
 $app->singleton(Manager::class, function (Application $app) {
     $manager = new Manager(
+        $app->make(Generator::class),
+        $app->make(FileExporter::class),
         $app->make(MissionTypeManager::class),
         $app->make(RewardTypeManager::class),
         $app->make(Integrator::class)

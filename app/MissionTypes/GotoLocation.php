@@ -36,13 +36,6 @@ class GotoLocation extends AbstractMissionType
         $this->missions = $missions;
     }
 
-    protected function getDescription(MissionInterface $mission): string
-    {
-        $location = $this->locations->byId($mission->getData()['location']);
-
-        return "Reise nach {$location->getName()}.";
-    }
-
     public function generate(): MissionInterface
     {
         return new GeneratedMission($this->getTypeName(), [
@@ -50,13 +43,20 @@ class GotoLocation extends AbstractMissionType
         ]);
     }
 
-    public function check(MissionInterface $mission): bool
-    {
-        return $mission->isCompleted();
-    }
-
     public function validateData(array $data): bool
     {
         return !!$this->location->byId($data['location'] ?? '');
+    }
+
+    protected function getDescription(MissionInterface $mission): string
+    {
+        $location = $this->locations->byId($mission->getData()['location']);
+
+        return "Reise nach {$location->getName()}.";
+    }
+
+    protected function isCompleted(MissionInterface $mission): bool
+    {
+        return $mission->isCompleted();
     }
 }

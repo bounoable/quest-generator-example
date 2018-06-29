@@ -36,13 +36,6 @@ class DefeatCharacter extends AbstractMissionType
         $this->missions = $missions;
     }
 
-    protected function getDescription(MissionInterface $mission): string
-    {
-        $character = $this->characters->byId($mission->getData()['character']);
-
-        return "Besiege {$character->getName()} im Kampf.";
-    }
-
     public function generate(): MissionInterface
     {
         return new GeneratedMission($this->getTypeName(), [
@@ -50,13 +43,20 @@ class DefeatCharacter extends AbstractMissionType
         ]);
     }
 
-    public function check(MissionInterface $mission): bool
-    {
-        return $mission->isCompleted();
-    }
-
     public function validateData(array $data): bool
     {
         return !!$this->characters->byId($data['character'] ?? '');
+    }
+
+    protected function getDescription(MissionInterface $mission): string
+    {
+        $character = $this->characters->byId($mission->getData()['character']);
+
+        return "Besiege {$character->getName()} im Kampf.";
+    }
+
+    protected function isCompleted(MissionInterface $mission): bool
+    {
+        return $mission->isCompleted();
     }
 }
