@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Bounoable\Quest\GeneratedQuest;
 use Bounoable\Quest\Quest as QuestInterface;
 use Bounoable\Quest\Reward as RewardInterface;
 use Bounoable\Quest\Mission as MissionInterface;
@@ -41,7 +40,7 @@ class QuestIntegrator implements Integrator
         $this->rewards = $rewards;
     }
 
-    public function start(GeneratedQuest $generated): QuestInterface
+    public function start(QuestInterface $generated): QuestInterface
     {
         $quest = new Quest;
 
